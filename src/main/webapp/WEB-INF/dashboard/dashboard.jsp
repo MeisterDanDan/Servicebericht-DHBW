@@ -41,6 +41,7 @@
             <c:when test="${empty sections}">
                 <p>
                     Es wurden keine Dashboard-Kacheln gefunden. 🙈
+                    //Das hier ist ein Testkommentar! Lösch mich.
                 </p>
             </c:when>
             <c:otherwise>
