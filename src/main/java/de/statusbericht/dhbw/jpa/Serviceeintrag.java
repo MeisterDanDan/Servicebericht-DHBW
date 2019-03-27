@@ -29,9 +29,9 @@ public class Serviceeintrag implements Serializable{
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "kommentar_id")
-    private Kommentar kommentar;
+//    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+//    @JoinColumn(name = "kommentar_id")
+//    private Kommentar kommentar;
 
     private ServiceThema thema;
 
@@ -101,11 +101,11 @@ public class Serviceeintrag implements Serializable{
         this.id = id;
     }
 
-    public Kommentar getKommentar() {
-        return kommentar;
-    }
-
-    public void setKommentar(Kommentar kommentar) {
-        this.kommentar = kommentar;
-    }
+//    public Kommentar getKommentar() {
+//        return kommentar;
+//    }
+//
+//    public void setKommentar(Kommentar kommentar) {
+//        this.kommentar = kommentar;
+//    }
 }

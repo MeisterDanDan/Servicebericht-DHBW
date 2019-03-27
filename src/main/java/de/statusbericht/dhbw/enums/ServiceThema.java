@@ -10,6 +10,14 @@ package de.statusbericht.dhbw.enums;
  *
  * @author Dominik Kunzmann
  */
-public class ServiceThema {
+public enum ServiceThema {
+    TECHNIK("Technik"),
+    RAUM("Raum"),
+    SONSTIGES("Sonstiges");
     
+    private String bezeichnung;
+    
+    private ServiceThema(String str){
+        this.bezeichnung = str;
+    }
 }

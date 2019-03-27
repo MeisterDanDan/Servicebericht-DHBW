@@ -10,6 +10,14 @@ package de.statusbericht.dhbw.enums;
  *
  * @author Dominik Kunzmann
  */
-public class ServiceStatus {
+public enum ServiceStatus {
+    GESCHLOSSEN("Geschlossen"),
+    INBEARBEITUNG("In Bearbeitung"),
+    OFFEN("Offen");
     
+    private String bezeichnung;
+    
+    private ServiceStatus(String str){
+        this.bezeichnung = str;
+    }
 }

@@ -19,7 +19,7 @@ import javax.persistence.Id;
 
 @Entity
 public class Administrator implements Serializable{
-    private static final long serialVersionUID = 1L;
+    
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -61,4 +61,10 @@ public class Administrator implements Serializable{
     public void setId(Long id) {
         this.id = id;
     }
+    
+    @Override
+    public String toString() {
+        return "Administrator{" + "id=" + id + ", Nickname: " + nickName + ", passwort=" + passwort + '}';
+    }
+    
 }

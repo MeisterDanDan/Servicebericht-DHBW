@@ -6,10 +6,34 @@
  */
 package de.statusbericht.dhbw.ejb;
 
+import de.statusbericht.dhbw.enums.ResponseStatus;
+import de.statusbericht.dhbw.helper.Response;
+import de.statusbericht.dhbw.jpa.Serviceeintrag;
+import javax.ejb.Stateless;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+
 /**
  *
  * @author Dominik Kunzmann
  */
+@Stateless
 public class ServiceeintragBean {
+    @PersistenceContext
+    protected EntityManager em;
     
+    public Response<Serviceeintrag> findById(long id) {
+        Response<Serviceeintrag> response = new Response<>();
+        try {
+            response.setResponse(em.find(Serviceeintrag.class,
+                    id));
+            response.setStatus(ResponseStatus.ERFOLGREICH);
+        } catch (Exception ex) {
+            response.setStatus(ResponseStatus.ERROR);
+            response.setException(ex.getClass().getName());
+            response.setMessage(ex.getMessage());
+        } finally {
+            return response;
+        }
+    }
 }
