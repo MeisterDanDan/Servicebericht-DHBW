@@ -76,7 +76,7 @@
             <c:otherwise>
                 <%-- Hinweis, dass es noch keine Fahrzeuge gibt --%>
                 <div class="alert alert-danger" role="alert">
-                    Es sind noch keine Fahrzeuge vorhanden.
+                    Es sind noch keine Berichte vorhanden.
                 </div>
             </c:otherwise>
         </c:choose>
