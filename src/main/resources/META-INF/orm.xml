@@ -7,7 +7,7 @@
     <persistence-unit-metadata>
         <persistence-unit-defaults>
             <!-- Dieser Wert muss für jede Anwendung ein anderer sein! -->
-            <schema>STATUSBERICHT_DHBW</schema>
+            <schema>SERVICEBERICHT_DHBW</schema>
         </persistence-unit-defaults>
     </persistence-unit-metadata>
 

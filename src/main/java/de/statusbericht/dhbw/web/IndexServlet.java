@@ -4,10 +4,13 @@
  * Dieser Quellcode ist lizenziert unter einer
  * Creative Commons Namensnennung 4.0 International Lizenz.
  */
-package de.servicebericht.dhbw.web;
+package de.statusbericht.dhbw.web;
 
+import de.statusbericht.dhbw.ejb.AdministratorBean;
+import de.statusbericht.dhbw.helper.Response;
+import de.statusbericht.dhbw.jpa.Administrator;
 import java.io.IOException;
-import java.io.PrintWriter;
+import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -21,32 +24,17 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(urlPatterns = {"/index.html"})
 public class IndexServlet extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        
-    }
-
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
+    @EJB
+    AdministratorBean administratorBean;
+    
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
+        long id = 1;
+        Response<Administrator> adminResponse = administratorBean.findById(id);
+        
+        request.setAttribute("administrator", adminResponse);
         request.getRequestDispatcher("WEB-INF/index/index.jsp").forward(request, response);
     }
 
