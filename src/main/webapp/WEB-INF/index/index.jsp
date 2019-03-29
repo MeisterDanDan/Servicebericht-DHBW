@@ -28,9 +28,29 @@
     </jsp:attribute>
 
     <jsp:attribute name="content">
-       <div>
-            <label for="administrator">Administrator: </label>
-            <input name="administrator" type="text" value="${administrator.response.nickName}" required</input>
-        </div>
+       <c:if test="${!empty serviceResponse.responseList}">
+            <form method="POST">
+                <div class="col-md-4 serviceeintrag">
+                                <c:choose>
+                                    <c:when test="${serviceeintrag.bild == null}">
+                                        <img src="<c:url value="/img/logo.svg.png"/>" alt="Logo der DHBW" class="card-img mx-auto"
+                                             style="min-height: 110px; max-height: 110px; width:auto; max-width: 100%;">
+                                    </c:when>
+                                </c:choose>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="card-body">
+                                    <h5 class="card-title">${serviceeintrag.thema} ${serviceeintrag.status}</h5>
+                                    <p class="card-text">Ort: ${serviceeintrag.ort}</p>
+                                    <p class="card-text">Beschreibung: ${serviceeintrag.beschreibung}</p>
+                                    <a href="<c:url value="/detail/${serviceeintrag.id}/"/>">
+                                        <button class="btn btn-primary btn-sm">
+                                            Details
+                                        </button>
+                                    </a>
+                                </div>
+                            </div>
+            </form>
+        </c:if>
     </jsp:attribute>
 </template:base>

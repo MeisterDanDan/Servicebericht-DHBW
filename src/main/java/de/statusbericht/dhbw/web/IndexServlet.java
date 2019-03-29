@@ -6,9 +6,9 @@
  */
 package de.statusbericht.dhbw.web;
 
-import de.statusbericht.dhbw.ejb.AdministratorBean;
+import de.statusbericht.dhbw.ejb.ServiceeintragBean;
 import de.statusbericht.dhbw.helper.Response;
-import de.statusbericht.dhbw.jpa.Administrator;
+import de.statusbericht.dhbw.jpa.Serviceeintrag;
 import java.io.IOException;
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
@@ -25,16 +25,16 @@ import javax.servlet.http.HttpServletResponse;
 public class IndexServlet extends HttpServlet {
 
     @EJB
-    AdministratorBean administratorBean;
+    ServiceeintragBean serviceeintrag;
     
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        long id = 1;
-        Response<Administrator> adminResponse = administratorBean.findById(id);
         
-        request.setAttribute("administrator", adminResponse);
+        Response<Serviceeintrag> serviceResponse = serviceeintrag.findAll();
+        
+        request.setAttribute("serviceResponse", serviceResponse);
         request.getRequestDispatcher("WEB-INF/index/index.jsp").forward(request, response);
     }
 

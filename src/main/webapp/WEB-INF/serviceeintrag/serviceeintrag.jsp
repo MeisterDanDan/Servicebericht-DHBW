@@ -32,6 +32,7 @@
             <div class="card">
                 <div class="card-body mb-3 mt-3">
                     <div class="form-row">
+                        <div class="col-md-6">
                         <label for="thema">Thema: </label>
                         <select name="thema" class="form-control form-control-sm" required>
                             <option value="" disabled selected style="display: none;">Bitte Thema wählen</option>
@@ -43,13 +44,18 @@
                         </select>
                         
                         <label for="beschreibung">Beschreibung: </label>
-                            <input name="beschreibung" type="text" class="form-control form-control-sm" required
-                                   value="${detailService.response.beschreibung}"</input>
+                            <textarea name="beschreibung" rows="4" cols="50" type="text" class="form-control form-control-sm" required
+                                   value="${detailService.response.beschreibung}"></textarea>
                             
                         <label for="ort">Ort: </label>
                             <input name="ort" type="text" class="form-control form-control-sm" required
                                    value="${detailService.response.ort}"</input>
-                            
+                        </div>
+                        <div class="col-md-6">
+                            <div class="servicebild">
+                                <img src="<c:url value="/img/logo.svg.png"/>" alt="Logo der DHBW"></img>
+                            </div>
+                        </div>
                     </div>
                     <div class="form-row">
                             <button type="submit" class="btn btn-success btn-sm m-3">Speichern</button>

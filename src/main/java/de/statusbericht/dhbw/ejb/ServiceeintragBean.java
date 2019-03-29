@@ -9,9 +9,12 @@ package de.statusbericht.dhbw.ejb;
 import de.statusbericht.dhbw.enums.ResponseStatus;
 import de.statusbericht.dhbw.helper.Response;
 import de.statusbericht.dhbw.jpa.Serviceeintrag;
+import java.util.ArrayList;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
@@ -50,5 +53,27 @@ public class ServiceeintragBean {
         } finally {
             return response;
         }
+    }
+    
+    public Response<Serviceeintrag> findAll() {
+        Response<Serviceeintrag> response = new Response<>();
+        try {
+            Query query = em.createQuery("SELECT s FROM Serviceeintrag s");
+            List<Serviceeintrag> services = query.getResultList();
+            response.setResponseList(new ArrayList<Serviceeintrag>());
+            
+            for (Serviceeintrag s : services) {
+                response.getResponseList().add(s);
+            }
+            response.setStatus(ResponseStatus.ERFOLGREICH);
+        } catch (Exception ex) {
+            response.setStatus(ResponseStatus.ERROR);
+            response.setException(ex.getClass().getName());
+            response.setMessage(ex.getMessage());
+            response.setStackTrace(ex.getStackTrace());
+        } finally {
+            return response;
+        }
+
     }
 }

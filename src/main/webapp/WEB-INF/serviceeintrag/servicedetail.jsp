@@ -43,8 +43,8 @@
                         </select>
                         
                         <label for="beschreibung">Beschreibung: </label>
-                            <input name="beschreibung" type="text" class="form-control form-control-sm" required
-                                   value="${detailService.response.beschreibung}"</input>
+                            <textarea name="beschreibung" rows="4" cols="50" type="text" class="form-control form-control-sm" required
+                                   value="${detailService.response.beschreibung}"></textarea>
                             
                         <label for="ort">Ort: </label>
                             <input name="ort" type="text" class="form-control form-control-sm" required
