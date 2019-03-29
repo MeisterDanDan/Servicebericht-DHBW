@@ -12,6 +12,7 @@
 <%@attribute name="title"%>
 <%@attribute name="head" fragment="true"%>
 <%@attribute name="menu" fragment="true"%>
+<%@attribute name="main" fragment="true"%>
 <%@attribute name="content" fragment="true"%>
 
 <!DOCTYPE html>
@@ -21,9 +22,13 @@
 
         <title>Servicebericht: ${title}</title>
 
-        <link rel="stylesheet" href="<c:url value="/fontello/css/fontello.css"/>" />
+        
+        
+        <link rel="stylesheet" href="<c:url value="/css/bootstrap.min.css"/>" />
+        <script src="<c:url value="/js/bootstrap.min.js"/>"></script>  
         <link rel="stylesheet" href="<c:url value="/css/main.css"/>" />
-
+        <link rel="stylesheet" href="<c:url value="/fontello/css/fontello.css"/>" />
+        
 
         <jsp:invoke fragment="head"/>
     </head>
@@ -43,6 +48,16 @@
                 <div class="logo">
                     <img src="<c:url value="/img/logo.svg.png"/>" alt="Logo der DHBW"></img>
                 </div>
+                
+            <div id="menubar">
+                <jsp:invoke fragment="menu"/>
+
+                <c:if test="${not empty pageContext.request.userPrincipal}">
+                    <div class="menuitem">
+                        <a href="<c:url value="/logout/"/>" class="icon-logout">Logout ${pageContext.request.userPrincipal.name}</a>
+                    </div>
+                </c:if>
+            </div>
         </header>
 
         <%-- Hauptinhalt der Seite --%>

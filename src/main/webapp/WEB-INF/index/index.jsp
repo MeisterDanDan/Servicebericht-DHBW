@@ -9,6 +9,8 @@
 <%@taglib tagdir="/WEB-INF/tags" prefix="template"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
 <template:base>
     <jsp:attribute name="title">
@@ -20,13 +22,15 @@
     </jsp:attribute>
 
     <jsp:attribute name="menu">
-        
+        <div class="menuitem">
+            <a href="<c:url value="/newServicebericht"/>">Servicebericht anlegen</a>
+        </div>
     </jsp:attribute>
 
     <jsp:attribute name="content">
        <div>
             <label for="administrator">Administrator: </label>
-            <input name="administrator" type="text" class="form-control form-control-sm" value="${administrator.response.nickName}" required></input>
+            <input name="administrator" type="text" value="${administrator.response.nickName}" required</input>
         </div>
     </jsp:attribute>
 </template:base>

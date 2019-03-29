@@ -22,6 +22,21 @@ public class ServiceeintragBean {
     @PersistenceContext
     protected EntityManager em;
     
+    public Response<Serviceeintrag> createService(Serviceeintrag s) {
+        Response<Serviceeintrag> response = new Response<>();
+        try {
+            em.persist(s);
+            response.setResponse(em.merge(s));
+            response.setStatus(ResponseStatus.ERFOLGREICH);
+        } catch (Exception ex) {
+            response.setStatus(ResponseStatus.ERROR);
+            response.setException(ex.getClass().getName());
+            response.setMessage(ex.getMessage());
+        } finally {
+            return response;
+        }
+    }
+    
     public Response<Serviceeintrag> findById(long id) {
         Response<Serviceeintrag> response = new Response<>();
         try {
