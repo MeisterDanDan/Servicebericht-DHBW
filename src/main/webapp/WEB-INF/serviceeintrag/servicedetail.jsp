@@ -32,7 +32,7 @@
             <div class="card">
                 <div class="card-body mb-3 mt-3">
                     <div class="form-row">
-                        <div class="col-md-4 serviceeintrag">
+                        <div class="col-md-6 serviceeintrag">
                                 <c:choose>
                                     <c:when test="${detailService.response.bild == null}">
                                         <img src="<c:url value="/img/logo.svg.png"/>" alt="Logo der DHBW" class="card-img mx-auto"
@@ -40,7 +40,7 @@
                                     </c:when>
                                 </c:choose>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-6">
                                 <label for="thema">Thema: </label>
                         <select name="thema" class="form-control form-control-sm" required>
                             <option value="" disabled selected style="display: none;">Bitte Thema wählen</option>

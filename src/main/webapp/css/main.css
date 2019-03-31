@@ -18,13 +18,13 @@ html, body {
     margin: 0;
 }
 
-html {
+html .background{
     font-family: 'Quicksand', sans-serif;
     font-size: 14pt;
 
     background-color: rgb(250, 250, 250);
     color: rgb(83, 91, 94);
-
+    
     background-image: url(../img/background.png);
     background-repeat: no-repeat;
     background-position: center center;

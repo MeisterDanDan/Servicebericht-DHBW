@@ -16,10 +16,6 @@
         Übersicht
     </jsp:attribute>
 
-    <jsp:attribute name="head">
-        <link rel="stylesheet" href="<c:url value="/css/index.css"/>" />
-    </jsp:attribute>
-
     <jsp:attribute name="menu">
         <div class="menuitem">
             <a href="<c:url value="/newServicebericht"/>">Servicebericht anlegen</a>
@@ -31,9 +27,9 @@
         <c:choose>
             <c:when test="${!empty ServiceResponse.responseList}">
                 <c:forEach items="${ServiceResponse.responseList}" var="serviceeintrag">
-                    <div class="card mb-3" style="max-width: 1000px">
+                    <div class="card mb-3">
                         <div class="row no-gutters">
-                            <div class="col-md-4 serviceeintrag">
+                            <div class="col-md-6 serviceeintrag">
                                 <c:choose>
                                     <c:when test="${serviceeintrag.bild == null}">
                                         <img src="<c:url value="/img/logo.svg.png"/>" alt="Logo der DHBW" class="card-img mx-auto"
@@ -41,7 +37,7 @@
                                     </c:when>
                                 </c:choose>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-6">
                                 <div class="card-body">
                                     <h5 class="card-title">${serviceeintrag.thema} ${serviceeintrag.status}</h5>
                                     <p class="card-text">Ort: ${serviceeintrag.ort}</p>

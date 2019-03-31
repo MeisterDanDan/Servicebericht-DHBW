@@ -17,10 +17,6 @@
         Anlegen
     </jsp:attribute>
 
-    <jsp:attribute name="head">
-        <link rel="stylesheet" href="<c:url value="/css/service.css"/>" />
-    </jsp:attribute>
-
     <jsp:attribute name="menu">
         <div class="menuitem">
             <a href="<c:url value="/newServicebericht"/>">Servicebericht anlegen</a>

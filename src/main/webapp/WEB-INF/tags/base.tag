@@ -23,11 +23,11 @@
         <title>Servicebericht: ${title}</title>
 
         
-        
+        <link rel="stylesheet" href="<c:url value="/fontello/css/fontello.css"/>" />
         <link rel="stylesheet" href="<c:url value="/css/bootstrap.min.css"/>" />
         <script src="<c:url value="/js/bootstrap.min.js"/>"></script>  
         <link rel="stylesheet" href="<c:url value="/css/main.css"/>" />
-        <link rel="stylesheet" href="<c:url value="/fontello/css/fontello.css"/>" />
+        
         
 
         <jsp:invoke fragment="head"/>
@@ -38,9 +38,9 @@
             <%-- Titelzeile --%>
             <div id="titlebar">
                 <a href="<c:url value="/"/>">
-                <div class="appname">
-                    Servicebericht
-                </div>
+                    <div class="appname">
+                        Servicebericht
+                    </div>
                 </a>
                 <div class="content">
                     ${title}
@@ -63,8 +63,10 @@
         </header>
 
         <%-- Hauptinhalt der Seite --%>
-        <main>    
-            <jsp:invoke fragment="content"/>
+        <main class="background">    
+            <div class="container p-3" style="min-height: 100%">
+                <jsp:invoke fragment="content"></jsp:invoke>
+                </div>
         </main>
     </body>
 </html>
