@@ -24,6 +24,12 @@
 
     <jsp:attribute name="content">
         
+        <c:if test="${ServiceResponse.message != null}">
+            <div class="alert alert-danger" role="alert">
+                <p>${ServiceResponse.message}</p>
+            </div>
+        </c:if>
+        
         <c:choose>
             <c:when test="${!empty ServiceResponse.responseList}">
                 <c:forEach items="${ServiceResponse.responseList}" var="serviceeintrag">
