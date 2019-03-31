@@ -16,12 +16,6 @@
         Übersicht
     </jsp:attribute>
 
-    <jsp:attribute name="menu">
-        <div class="menuitem">
-            <a href="<c:url value="/newServicebericht"/>">Servicebericht anlegen</a>
-        </div>
-    </jsp:attribute>
-
     <jsp:attribute name="content">
         
         <c:if test="${ServiceResponse.message != null}">

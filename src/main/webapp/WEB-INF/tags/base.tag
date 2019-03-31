@@ -46,6 +46,7 @@
                     ${title}
                 </div>
                 
+                
             </div>
                 <div class="logo">
                     <img src="<c:url value="/img/logo.svg.png"/>" alt="Logo der DHBW"></img>
@@ -53,12 +54,25 @@
                 
             <div id="menubar">
                 <jsp:invoke fragment="menu"/>
-
-                <c:if test="${not empty pageContext.request.userPrincipal}">
-                    <div class="menuitem">
-                        <a href="<c:url value="/logout/"/>" class="icon-logout">Logout ${pageContext.request.userPrincipal.name}</a>
-                    </div>
-                </c:if>
+                
+                
+        <div class="menuitem">
+            
+                    <a href="<c:url value="/newServicebericht"/>">Servicebericht anlegen</a>
+               
+                    <c:if test="${administrator.response == null}">
+                        <a href="<c:url value="/login"/>">
+                            Login
+                        </a>
+                    </c:if>
+                    <c:if test="${administrator.response != null}">
+                        <a href="<c:url value="/logout"/>">
+                            Abmelden
+                        </a>
+                    </c:if>
+                
+        </div>
+  
             </div>
         </header>
 

@@ -21,12 +21,6 @@
         <link rel="stylesheet" href="<c:url value="/css/service.css"/>" />
     </jsp:attribute>
 
-    <jsp:attribute name="menu">
-        <div class="menuitem">
-            <a href="<c:url value="/newServicebericht"/>">Servicebericht anlegen</a>
-        </div>
-    </jsp:attribute>
-
     <jsp:attribute name="content">
         <form method="POST">
             <div class="card">

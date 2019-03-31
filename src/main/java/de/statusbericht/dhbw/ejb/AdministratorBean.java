@@ -11,6 +11,7 @@ import de.statusbericht.dhbw.helper.Response;
 import de.statusbericht.dhbw.jpa.Administrator;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 
 /**
@@ -35,5 +36,21 @@ public class AdministratorBean {
         } finally {
             return response;
         }
+    }
+    
+    public Response<Administrator> findByNick(String nick) {
+        Response<Administrator> nutzer = new Response<>();
+        try {
+            nutzer.setResponse((Administrator) (em.createQuery("SELECT a FROM Administrator a WHERE a.nickName LIKE :NICK")
+                    .setParameter("NICK", nick)
+                    .getSingleResult()));
+            nutzer.setStatus(ResponseStatus.ERFOLGREICH);
+        } catch (NoResultException ex) {
+            nutzer.setStatus(ResponseStatus.ERROR);
+            nutzer.setException(ex.getClass().getName());
+            nutzer.setMessage(ex.getMessage());
+            nutzer.setStackTrace(ex.getStackTrace());
+        }
+        return nutzer;
     }
 }
