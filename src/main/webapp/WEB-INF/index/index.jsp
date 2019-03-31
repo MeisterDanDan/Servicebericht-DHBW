@@ -30,6 +30,33 @@
             </div>
         </c:if>
         
+        <c:if test="${!empty ServiceResponse.responseList}">
+            <form method="POST">
+                <div class="card mb-3 p-3" style="max-width: 1000px;">
+                    <div class="row">
+                        <div class="col-md-2">
+                            <label for="sortierenAb">Filtern nach: </label>
+                        </div>
+                        <div class="col-md-8">
+                            <select name="sortierenAb" class="form-control form-control-sm" required>
+                            <option value="${themaValue}" disabled selected style="display: none;">Bitte Thema wählen:</option>
+                                <c:forEach items="${themaList}" var="themaValue">
+                                    <option value="${themaValue}" ${themaValue == detailService.response.thema ? 'selected' : ''}>
+                                        ${themaValue}
+                                    </option>
+                                </c:forEach>
+                            </select>
+                        </div>
+                          
+                        <div class="col-md-2 text-right">
+                            <button type="submit" class="btn btn-primary btn-sm">Filtern</button>
+                        </div>
+                    
+                    </div>
+                </div>
+            </form>
+        </c:if>
+        
         <c:choose>
             <c:when test="${!empty ServiceResponse.responseList}">
                 <c:forEach items="${ServiceResponse.responseList}" var="serviceeintrag">
