@@ -9,8 +9,7 @@
 <%@taglib tagdir="/WEB-INF/tags" prefix="template"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
-<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
 
 <template:base>
     <jsp:attribute name="title">
@@ -28,9 +27,13 @@
     </jsp:attribute>
 
     <jsp:attribute name="content">
-       <c:if test="${!empty serviceResponse.responseList}">
-            <form method="POST">
-                <div class="col-md-4 serviceeintrag">
+        
+        <c:choose>
+            <c:when test="${!empty ServiceResponse.responseList}">
+                <c:forEach items="${ServiceResponse.responseList}" var="serviceeintrag">
+                    <div class="card mb-3" style="max-width: 1000px">
+                        <div class="row no-gutters">
+                            <div class="col-md-4 serviceeintrag">
                                 <c:choose>
                                     <c:when test="${serviceeintrag.bild == null}">
                                         <img src="<c:url value="/img/logo.svg.png"/>" alt="Logo der DHBW" class="card-img mx-auto"
@@ -50,7 +53,17 @@
                                     </a>
                                 </div>
                             </div>
-            </form>
-        </c:if>
+                        </div>
+                    </div>
+                </c:forEach>
+            </c:when>
+            <c:otherwise>
+                <%-- Hinweis, dass es noch keine Einträge gibt --%>
+                <div class="alert alert-danger" role="alert">
+                    Es sind noch keine Berichte vorhanden.
+                </div>
+            </c:otherwise>
+            </c:choose>
+        
     </jsp:attribute>
 </template:base>

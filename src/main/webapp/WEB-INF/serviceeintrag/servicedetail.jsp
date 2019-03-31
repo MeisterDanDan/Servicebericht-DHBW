@@ -32,7 +32,16 @@
             <div class="card">
                 <div class="card-body mb-3 mt-3">
                     <div class="form-row">
-                        <label for="thema">Thema: </label>
+                        <div class="col-md-4 serviceeintrag">
+                                <c:choose>
+                                    <c:when test="${detailService.response.bild == null}">
+                                        <img src="<c:url value="/img/logo.svg.png"/>" alt="Logo der DHBW" class="card-img mx-auto"
+                                             style="min-height: 110px; max-height: 110px; width:auto; max-width: 100%;">
+                                    </c:when>
+                                </c:choose>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="thema">Thema: </label>
                         <select name="thema" class="form-control form-control-sm" required>
                             <option value="" disabled selected style="display: none;">Bitte Thema wählen</option>
                             <c:forEach items="${themaList}" var="themaValue">
@@ -44,11 +53,13 @@
                         
                         <label for="beschreibung">Beschreibung: </label>
                             <textarea name="beschreibung" rows="4" cols="50" type="text" class="form-control form-control-sm" required
-                                   value="${detailService.response.beschreibung}"></textarea>
+                                   >${detailService.response.beschreibung}</textarea>
                             
                         <label for="ort">Ort: </label>
                             <input name="ort" type="text" class="form-control form-control-sm" required
                                    value="${detailService.response.ort}"</input>
+                            </div>
+                        
                             
                     </div>
                 </div>

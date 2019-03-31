@@ -75,6 +75,7 @@ header, main {
 
 #titlebar .appname {
     color: rgb(226, 0, 26);
+    text-decoration: none;
 }
 
 .logo{

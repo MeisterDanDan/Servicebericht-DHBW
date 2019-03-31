@@ -52,7 +52,7 @@ public class ServiceDetailServlet extends HttpServlet{
         }
         
         Response<Serviceeintrag> serviceResponse = serviceBean.findById(id);
-        request.setAttribute("service", serviceResponse);
+        request.setAttribute("detailService", serviceResponse);
 
         ServiceStatus[] statusList = serviceStatus.values();
         request.setAttribute("statusList", statusList);

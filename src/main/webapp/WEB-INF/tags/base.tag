@@ -37,9 +37,11 @@
         <header>
             <%-- Titelzeile --%>
             <div id="titlebar">
+                <a href="<c:url value="/"/>">
                 <div class="appname">
                     Servicebericht
                 </div>
+                </a>
                 <div class="content">
                     ${title}
                 </div>
