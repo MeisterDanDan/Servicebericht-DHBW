@@ -70,6 +70,9 @@
                             Abmelden
                         </a>
                     </c:if>
+                    
+                    <a href="<c:url value="/registrieren"/>">Registrieren</a>
+                    
                 
         </div>
   
