@@ -4,7 +4,7 @@
  * Dieser Quellcode ist lizenziert unter einer
  * Creative Commons Namensnennung 4.0 International Lizenz.
  */
-package dhbwka.wwi.vertsys.javaee.jtodo.profilverwaltung.web;
+package dhbwka.wwi.vertsys.javaee.servicebericht.common.web;
 
 import dhbwka.wwi.vertsys.javaee.jtodo.common.jpa.User;
 import dhbwka.wwi.vertsys.javaee.servicebericht.common.ejb.UserBean;

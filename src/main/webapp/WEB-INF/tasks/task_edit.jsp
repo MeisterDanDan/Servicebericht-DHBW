@@ -54,7 +54,9 @@
                 <label for="task_category">Kategorie:</label>
                 <div class="side-by-side">
                     <select name="task_category">
-                        <option value="">Keine Kategorie</option>
+                        <option value="">Technik</option>
+                        <option value="">Raum</option>
+                        <option value="">Sonstiges</option>
 
                         <c:forEach items="${categories}" var="category">
                             <option value="${category.id}" ${task_form.values["task_category"][0] == category.id.toString() ? 'selected' : ''}>
