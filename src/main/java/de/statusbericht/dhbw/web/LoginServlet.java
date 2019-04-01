@@ -45,28 +45,34 @@ public class LoginServlet extends HttpServlet {
 
         String nickName = request.getParameter("nickName");
         String passwort = request.getParameter("passwort");
+        
+        try {
+            request.login(nickName, passwort);
+        } catch (ServletException ex) {
+             ex.printStackTrace();
+        }
         Response<Administrator> responseA = adminBean.findByNick(nickName);
 
-            if (responseA.getStatus() == ResponseStatus.ERFOLGREICH) {
-                if (responseA.getResponse().getPasswort().trim().equals(passwort.trim())) {
-                    responseA.setMessage("Passworteingabe Erfolgreich!");
-                } else {
-                    responseA.setStatus(ResponseStatus.ERROR);
-                    responseA.setMessage("Falsches Passwort!");
-                    request.setAttribute("nickName", nickName);
-                    request.getRequestDispatcher("/WEB-INF/einloggen/einloggen.jsp").forward(request, response);
-                    return;
-                }
-            } else {
-                responseA.setStatus(ResponseStatus.ERROR);
-                responseA.setMessage("Es gibt keinen Mitarbeiter mit dem eingegebenen Namen");
-                request.getRequestDispatcher("/WEB-INF/einloggen/einloggen.jsp").forward(request, response);
-                return;
-
-            }
+//            if (responseA.getStatus() == ResponseStatus.ERFOLGREICH) {
+//                if (responseA.getResponse().getPasswort().trim().equals(passwort.trim())) {
+//                    responseA.setMessage("Passworteingabe Erfolgreich!");
+//                } else {
+//                    responseA.setStatus(ResponseStatus.ERROR);
+//                    responseA.setMessage("Falsches Passwort!");
+//                    request.setAttribute("nickName", nickName);
+//                    request.getRequestDispatcher("/WEB-INF/einloggen/einloggen.jsp").forward(request, response);
+//                    return;
+//                }
+//            } else {
+//                responseA.setStatus(ResponseStatus.ERROR);
+//                responseA.setMessage("Es gibt keinen Mitarbeiter mit dem eingegebenen Namen");
+//                request.getRequestDispatcher("/WEB-INF/einloggen/einloggen.jsp").forward(request, response);
+//                return;
+//
+//            }
         
      
-        session.setAttribute("administrator", responseA);
+//        session.setAttribute("administrator", responseA);
         response.sendRedirect(request.getContextPath());
     }
     
