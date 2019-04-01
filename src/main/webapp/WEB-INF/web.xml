@@ -26,13 +26,13 @@
     
     <security-constraint>
         <display-name>
-            Geschützter Bereich für Administrator
+            Geschützter Bereich für angemeldete Benutzer
         </display-name>
         <!--
             Alle URLs beginnend mit /app/ schützen
         -->
         <web-resource-collection>
-            <web-resource-name>servicebericht-dhbw</web-resource-name>
+            <web-resource-name>todo-app</web-resource-name>
             <url-pattern>/app/*</url-pattern>
         </web-resource-collection>
         
@@ -41,8 +41,9 @@
             Seiten aufrufen zu können.
         -->
         <auth-constraint>
-            <role-name>administrator</role-name>
+            <role-name>app-user</role-name>
         </auth-constraint>
+        
         
         <!--
             Sicherstellen, dass nur verschlüsselte Verbindungen via HTTPS
@@ -53,21 +54,8 @@
             <transport-guarantee>CONFIDENTIAL</transport-guarantee>
         </user-data-constraint>
     </security-constraint>
-
-    <!--
-        Übersicht über alle von dieser Webanwendung genutzten Benutzerollen
-        für den Admin. Die Vergabe der Rollen erfolgt durch Hinzufügen der
-        Benutzer zu bestimmten Benutzergruppen. In der Datei glassfish-web.xml
-        ist dabei das Mapping zwischen Benutzergruppen und Rollen definiert.
-    -->
-    <security-role>
-        <description>
-            Ein Benutzer der jTodo-Beispielanwendung. Jeder Benutzer muss
-            mindestens diese Rolle besitzen, um sich einloggen und neue
-            Aufgaben anlegen zu können.
-        </description>
-        <role-name>administrator</role-name>
-    </security-role>
+    
+    
     
     <!--
         Definition der JSP-Dateien mit dem Loginformular und einer Fehlerseite,
@@ -75,10 +63,11 @@
     -->
     <login-config>
         <auth-method>FORM</auth-method>
-        <realm-name>servicebericht-dhbw</realm-name>
+        <realm-name>todo-app</realm-name>
         
         <form-login-config>
-            <form-login-page>/WEB-INF/einloggen/einloggen.jsp</form-login-page>
+            <form-login-page>/WEB-INF/login/login.jsp</form-login-page>
+            <form-error-page>/WEB-INF/login/error.jsp</form-error-page>
         </form-login-config>
     </login-config>
 </web-app>

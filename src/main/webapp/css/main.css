@@ -18,12 +18,12 @@ html, body {
     margin: 0;
 }
 
-html .background{
+html{
     font-family: 'Quicksand', sans-serif;
     font-size: 14pt;
 
     background-color: rgb(250, 250, 250);
-    color: rgb(83, 91, 94);
+    color: rgb(255, 255, 255);
     
     background-image: url(../img/background.png);
     background-repeat: no-repeat;
@@ -105,4 +105,5 @@ a, a:visited {
 a:hover {
     text-decoration: underline;
 }
+
 
