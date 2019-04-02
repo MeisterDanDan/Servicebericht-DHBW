@@ -28,7 +28,7 @@
             <a href="<c:url value="/app/tasks/task/new/"/>">Servicebericht anlegen</a>
         </div>
         
-        <c:if test="${user.admin}">
+        <c:if test="${userI.admin}">
                 <div class="menuitem">
                             <a href="<c:url value="/app/tasks/categories/"/>">Kategorien bearbeiten</a>
                 </div>
@@ -61,21 +61,22 @@
                                                 </tr>
                                             </thead>
                                             <c:forEach items="${userList}" var="user">
-                                                
-                                            <tbody>
-                                                <tr>
-                                                    <td>
-                                                        <input type="checkbox" name="user" id="${'user-'.concat(user.username)}" value="${user.username}" />
-                                                        <label for="${'user-'.concat(user.username)}">
-                                                    </td>
-                                                    <td>
-                                                        <c:out value="${user.vorname}"/>
-                                                    </td>
-                                                    <td>
-                                                        <c:out value="${user.admin}"/>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
+                                                <c:if test="${userI.username != user.username}">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>
+                                                                <input type="checkbox" name="user" id="${'user-'.concat(user.username)}" value="${user.username}" />
+                                                                <label for="${'user-'.concat(user.username)}">
+                                                            </td>
+                                                            <td>
+                                                                <c:out value="${user.vorname}"/>
+                                                            </td>
+                                                            <td>
+                                                                <c:out value="${user.admin}"/>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </c:if>
                                             </c:forEach>
                                         </table>
                                     </label>
@@ -86,6 +87,10 @@
                             <button type="submit" name="action" value="submit" class="icon-trash">
                                 Administratorrechte vergeben
                             </button>
+                            <button type="submit" name="action" value="remove" class="icon-trash">
+                                Administratorrechte entfernen
+                            </button>
+                            
                         </div>
                     </c:otherwise>
                 </c:choose>
