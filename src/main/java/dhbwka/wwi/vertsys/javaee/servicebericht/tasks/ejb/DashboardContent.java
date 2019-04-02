@@ -97,12 +97,6 @@ public class DashboardContent implements DashboardContentProvider {
                 case FINISHED:
                     icon = "ok";
                     break;
-                case CANCELED:
-                    icon = "cancel";
-                    break;
-                case POSTPONED:
-                    icon = "bell-off-empty";
-                    break;
             }
 
             tile = this.createTile(category, status, status.getLabel(), cssClass1, icon);

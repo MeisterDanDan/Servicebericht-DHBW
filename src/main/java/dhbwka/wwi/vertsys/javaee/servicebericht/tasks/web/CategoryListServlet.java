@@ -9,6 +9,7 @@
  */
 package dhbwka.wwi.vertsys.javaee.servicebericht.tasks.web;
 
+import dhbwka.wwi.vertsys.javaee.servicebericht.common.ejb.UserBean;
 import dhbwka.wwi.vertsys.javaee.servicebericht.common.web.FormValues;
 import dhbwka.wwi.vertsys.javaee.servicebericht.tasks.ejb.CategoryBean;
 import dhbwka.wwi.vertsys.javaee.servicebericht.tasks.ejb.TaskBean;
@@ -42,6 +43,9 @@ public class CategoryListServlet extends HttpServlet {
 
     @EJB
     ValidationBean validationBean;
+    
+    @EJB
+    UserBean userBean;
 
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -49,6 +53,8 @@ public class CategoryListServlet extends HttpServlet {
 
         // Alle vorhandenen Kategorien ermitteln
         request.setAttribute("categories", this.categoryBean.findAllSorted());
+        
+        request.setAttribute("user", this.userBean.getCurrentUser());
 
         // Anfrage an dazugerhörige JSP weiterleiten
         RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/tasks/category_list.jsp");

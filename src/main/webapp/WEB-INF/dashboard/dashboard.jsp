@@ -34,6 +34,12 @@
         <div class="menuitem">
             <a href="<c:url value="/app/profil/"/>">Profilverwaltung</a>
         </div>
+        
+            <c:if test="${user.admin}">
+                <div class="menuitem">
+                            <a href="<c:url value="/app/tasks/categories/"/>">Kategorien bearbeiten</a>
+                </div>
+            </c:if>
 
     </jsp:attribute>
 

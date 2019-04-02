@@ -57,6 +57,7 @@ public class TaskEditServlet extends HttpServlet {
         // Verfügbare Kategorien und Stati für die Suchfelder ermitteln
         request.setAttribute("categories", this.categoryBean.findAllSorted());
         request.setAttribute("statuses", TaskStatus.values());
+        request.setAttribute("user", this.userBean.getCurrentUser());
 
         // Zu bearbeitende Aufgabe einlesen
         HttpSession session = request.getSession();
