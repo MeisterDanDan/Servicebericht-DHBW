@@ -8,7 +8,10 @@ package dhbwka.wwi.vertsys.javaee.servicebericht.common.web;
 
 import dhbwka.wwi.vertsys.javaee.servicebericht.common.ejb.UserBean;
 import dhbwka.wwi.vertsys.javaee.servicebericht.common.jpa.User;
+import dhbwka.wwi.vertsys.javaee.servicebericht.tasks.jpa.Category;
+import dhbwka.wwi.vertsys.javaee.servicebericht.tasks.jpa.Task;
 import java.io.IOException;
+import java.util.List;
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -63,15 +66,38 @@ public class NutzerverwaltungServlet extends HttpServlet{
     private void submitRechte(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-            User user = userBean.getCurrentUser();
-                    
+            String[] userNames = request.getParameterValues("user");
 
-            HttpSession session = request.getSession();
-            session.setAttribute("test", user);
-        
+            if (userNames == null) {
+                userNames = new String[0];
+            }
+             
+            // Kategorien löschen
+        for (String username : userNames) {
+            // Zu löschende Kategorie ermitteln
+            User userName;
 
+            try {
+                userName = this.userBean.findByUsername(username);
+                this.userBean.update(userName);
+            } catch (NumberFormatException ex) {
+                continue;
+            }
+
+            if (userName == null) {
+                continue;
+            }
+            
+            
+
+            // Userrechte vergeben
+            this.userBean.update(userName);
+        }
+
+        // Browser auffordern, die Seite neuzuladen
         response.sendRedirect(request.getRequestURI());
     }
+        
 
     private void removeRechte(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {

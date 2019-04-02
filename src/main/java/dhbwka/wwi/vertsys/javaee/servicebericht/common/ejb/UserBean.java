@@ -10,6 +10,7 @@
 package dhbwka.wwi.vertsys.javaee.servicebericht.common.ejb;
 
 import dhbwka.wwi.vertsys.javaee.servicebericht.common.jpa.User;
+import dhbwka.wwi.vertsys.javaee.servicebericht.tasks.jpa.Task;
 import java.util.List;
 import javax.annotation.Resource;
 import javax.annotation.security.RolesAllowed;
@@ -42,6 +43,12 @@ public class UserBean {
             System.out.println("Fehler: " + ex);
         }
         return user;
+    }
+    
+    public User findByUsername(String username) {
+        return this.em.find(User.class,
+                    username)
+                ;
     }
 
     /**
