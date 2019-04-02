@@ -37,6 +37,16 @@
                 <input type="hidden" name="csrf_token" value="${csrf_token}">
 
                 <%-- Eingabefelder --%>
+                
+                <label for="admin">Administrator:</label>
+                <div class="adminCheckbox">
+                    <input type="checkbox" name="admin" disabled <c:if test="${currentUser.admin}">
+                           checked
+                        </c:if>
+                        
+                    >
+                </div>
+                
                 <label for="benutzerN">Benutzername:</label>
                 <div class="side-by-side">
                     <input type="text" name="benutzerN" value="${currentUser.username}" readonly="readonly">

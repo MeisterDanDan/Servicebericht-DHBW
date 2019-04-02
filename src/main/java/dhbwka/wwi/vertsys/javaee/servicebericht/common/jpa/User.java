@@ -51,6 +51,16 @@ public class User implements Serializable {
     private String vorname;
     
     private String telefonnummer;
+    
+    private boolean admin;
+
+    public boolean isAdmin() {
+        return admin;
+    }
+
+    public void setAdmin(boolean admin) {
+        this.admin = admin;
+    }
 
     public String getNachname() {
         return nachname;
