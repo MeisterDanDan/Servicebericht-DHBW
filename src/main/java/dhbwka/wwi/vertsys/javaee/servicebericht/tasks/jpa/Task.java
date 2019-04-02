@@ -9,7 +9,7 @@
  */
 package dhbwka.wwi.vertsys.javaee.servicebericht.tasks.jpa;
 
-import dhbwka.wwi.vertsys.javaee.jtodo.common.jpa.User;
+import dhbwka.wwi.vertsys.javaee.servicebericht.common.jpa.User;
 import java.io.Serializable;
 import java.sql.Time;
 import javax.persistence.Column;

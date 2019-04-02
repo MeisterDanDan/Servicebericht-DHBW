@@ -6,7 +6,7 @@
  */
 package dhbwka.wwi.vertsys.javaee.servicebericht.common.web;
 
-import dhbwka.wwi.vertsys.javaee.jtodo.common.jpa.User;
+import dhbwka.wwi.vertsys.javaee.servicebericht.common.jpa.User;
 import dhbwka.wwi.vertsys.javaee.servicebericht.common.ejb.UserBean;
 import dhbwka.wwi.vertsys.javaee.servicebericht.tasks.ejb.TaskBean;
 import dhbwka.wwi.vertsys.javaee.servicebericht.tasks.jpa.Task;

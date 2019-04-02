@@ -11,7 +11,7 @@ package dhbwka.wwi.vertsys.javaee.servicebericht.common.web;
 
 import dhbwka.wwi.vertsys.javaee.servicebericht.common.ejb.ValidationBean;
 import dhbwka.wwi.vertsys.javaee.servicebericht.common.ejb.UserBean;
-import dhbwka.wwi.vertsys.javaee.jtodo.common.jpa.User;
+import dhbwka.wwi.vertsys.javaee.servicebericht.common.jpa.User;
 import java.io.IOException;
 import java.util.List;
 import javax.ejb.EJB;
