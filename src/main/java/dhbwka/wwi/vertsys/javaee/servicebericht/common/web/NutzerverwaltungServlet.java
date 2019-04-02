@@ -88,7 +88,7 @@ public class NutzerverwaltungServlet extends HttpServlet{
                 continue;
             }
             
-            
+            userName.setAdmin(true);
 
             // Userrechte vergeben
             this.userBean.update(userName);
@@ -101,6 +101,35 @@ public class NutzerverwaltungServlet extends HttpServlet{
 
     private void removeRechte(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+   String[] userNames = request.getParameterValues("user");
 
+            if (userNames == null) {
+                userNames = new String[0];
+            }
+             
+            // Kategorien löschen
+        for (String username : userNames) {
+            // Zu löschende Kategorie ermitteln
+            User userName;
+
+            try {
+                userName = this.userBean.findByUsername(username);
+                this.userBean.update(userName);
+            } catch (NumberFormatException ex) {
+                continue;
+            }
+
+            if (userName == null) {
+                continue;
+            }
+            
+            userName.setAdmin(false);
+
+            // Userrechte vergeben
+            this.userBean.update(userName);
+        }
+
+        // Browser auffordern, die Seite neuzuladen
+        response.sendRedirect(request.getRequestURI());
     }
 }
