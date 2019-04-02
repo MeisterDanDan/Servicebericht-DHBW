@@ -1,0 +1,17 @@
+/*
+Copyright © 2019 Patrick Gießler, Dominik Kunzmann, Daniel Wenzl
+
+Dieser Quellcode ist lizenziert unter einer
+Creative Commons Namensnennung 4.0 International Lizenz.
+*/
+/* 
+    Created on : 02.04.2019, 12:11:31
+    Author     : Dominik Kunzmann
+*/
+
+td, th {
+    padding-right: 2em;
+    text-align: left;
+    vertical-align: baseline;
+}
+

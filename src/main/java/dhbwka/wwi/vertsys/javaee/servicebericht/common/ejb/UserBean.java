@@ -10,12 +10,14 @@
 package dhbwka.wwi.vertsys.javaee.servicebericht.common.ejb;
 
 import dhbwka.wwi.vertsys.javaee.servicebericht.common.jpa.User;
+import java.util.List;
 import javax.annotation.Resource;
 import javax.annotation.security.RolesAllowed;
 import javax.ejb.EJBContext;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  * Spezielle EJB zum Anlegen eines Benutzers und Aktualisierung des Passworts.
@@ -28,6 +30,19 @@ public class UserBean {
     
     @Resource
     EJBContext ctx;
+    
+    public List getUserList(){
+        List<User> user = null;
+        try{
+        Query query = em.createQuery("SELECT u FROM User u");
+        user = query.getResultList();
+        
+        }
+        catch(Exception ex){
+            System.out.println("Fehler: " + ex);
+        }
+        return user;
+    }
 
     /**
      * Gibt das Datenbankobjekt des aktuell eingeloggten Benutzers zurück,

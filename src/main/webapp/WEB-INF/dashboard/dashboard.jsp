@@ -31,13 +31,19 @@
             <a href="<c:url value="/app/tasks/task/new/"/>">Servicebericht anlegen</a>
         </div>
         
+            <c:if test="${user.admin}">
+                <div class="menuitem">
+                            <a href="<c:url value="/app/tasks/categories/"/>">Kategorien bearbeiten</a>
+                </div>
+            </c:if>
+        
         <div class="menuitem">
             <a href="<c:url value="/app/profil/"/>">Profilverwaltung</a>
         </div>
         
             <c:if test="${user.admin}">
                 <div class="menuitem">
-                            <a href="<c:url value="/app/tasks/categories/"/>">Kategorien bearbeiten</a>
+                            <a href="<c:url value="/app/nutzerverwaltung/"/>">Nutzerverwaltung</a>
                 </div>
             </c:if>
 
