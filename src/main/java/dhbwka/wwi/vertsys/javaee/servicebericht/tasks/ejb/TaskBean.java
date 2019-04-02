@@ -13,6 +13,9 @@ import dhbwka.wwi.vertsys.javaee.servicebericht.common.ejb.EntityBean;
 import dhbwka.wwi.vertsys.javaee.servicebericht.tasks.jpa.Category;
 import dhbwka.wwi.vertsys.javaee.servicebericht.tasks.jpa.Task;
 import dhbwka.wwi.vertsys.javaee.servicebericht.tasks.jpa.TaskStatus;
+import dhbwka.wwi.vertsys.javaee.servicebericht.tasks.jpa.TaskToRet;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import javax.annotation.security.RolesAllowed;
 import javax.ejb.Stateless;
@@ -42,7 +45,18 @@ public class TaskBean extends EntityBean<Task, Long> {
                  .setParameter("username", username)
                  .getResultList();
     }
-    
+      public List<TaskToRet> getTasks() {
+          
+            String select = "SELECT t FROM Task t";
+       
+            List<Task> tasks = em.createQuery(select).getResultList();
+            List<TaskToRet> tasksToRet = new ArrayList<>();
+        for (Task task : tasks) {
+            TaskToRet taskRet= new TaskToRet(task.getId(),task.getCategory(), task.getShortText(), task.getLongText());
+            tasksToRet.add(taskRet);
+        }
+            return tasksToRet;
+      }
     /**
      * Suche nach Aufgaben anhand ihrer Bezeichnung, Kategorie und Status.
      * 

@@ -8,6 +8,7 @@ package dhbwka.wwi.vertsys.javaee.servicebericht.common.rest;
 
 import dhbwka.wwi.vertsys.javaee.servicebericht.tasks.ejb.TaskBean;
 import dhbwka.wwi.vertsys.javaee.servicebericht.tasks.jpa.Task;
+import dhbwka.wwi.vertsys.javaee.servicebericht.tasks.jpa.TaskToRet;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
@@ -31,8 +32,9 @@ public class TicketRes {
     @EJB
     private TaskBean taskBean;
     @GET
-    public List<Task> findTickets() {
-        return this.taskBean.findAll();
+    @Produces(MediaType.APPLICATION_JSON)   
+    public List<TaskToRet> findTickets() {
+        return this.taskBean.getTasks();
     }
      @POST
     public Task saveNewTicket(@Valid Task ticket) {
