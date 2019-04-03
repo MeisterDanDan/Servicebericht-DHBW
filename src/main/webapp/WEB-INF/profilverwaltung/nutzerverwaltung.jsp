@@ -33,6 +33,14 @@
                             <a href="<c:url value="/app/tasks/categories/"/>">Kategorien bearbeiten</a>
                 </div>
             </c:if>
+        
+        <div class="menuitem">
+            <a href="<c:url value="/app/profil/"/>">Profilverwaltung</a>
+        </div>
+        
+        <div class="menuitem">
+                            <a href="<c:url value="/api/Tickets" />" target="_blank">REST - Schnittstelle</a>
+        </div>
 
     </jsp:attribute>
 

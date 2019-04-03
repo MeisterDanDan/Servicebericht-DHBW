@@ -45,7 +45,13 @@
                 <div class="menuitem">
                             <a href="<c:url value="/app/nutzerverwaltung/"/>">Nutzerverwaltung</a>
                 </div>
-            </c:if>
+            </c:if> 
+        
+        
+                <div class="menuitem">
+                            <a href="<c:url value="/api/Tickets" />" target="_blank">REST - Schnittstelle</a>
+                </div>
+            
 
     </jsp:attribute>
 
