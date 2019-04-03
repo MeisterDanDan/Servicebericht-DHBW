@@ -114,9 +114,11 @@ public class User implements Serializable {
     public User() {
     }
 
-    public User(String username, String password) {
+    public User(String username, String password, String vorname, String nachname) {
         this.username = username;
         this.password.password = password;
+        this.vorname = vorname;
+        this.nachname = nachname;
         this.passwordHash = this.hashPassword(password);
     }
     //</editor-fold>
