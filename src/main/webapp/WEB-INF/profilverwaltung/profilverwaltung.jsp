@@ -23,33 +23,12 @@
         <div class="menuitem">
             <a href="<c:url value="/app/dashboard/"/>">Dashboard</a>
         </div>
-
-        <div class="menuitem">
-            <a href="<c:url value="/app/tasks/task/new/"/>">Servicebericht anlegen</a>
-        </div>
-        
-        <c:if test="${user.admin}">
-                <div class="menuitem">
-                            <a href="<c:url value="/app/tasks/categories/"/>">Kategorien bearbeiten</a>
-                </div>
-            </c:if>
         
         <c:if test="${user.admin}">
                 <div class="menuitem">
                             <a href="<c:url value="/app/nutzerverwaltung/"/>">Nutzerverwaltung</a>
                 </div>
-            </c:if>
-        
-        <c:if test="${userI.admin}">
-                <div class="menuitem">
-                            <a href="<c:url value="/app/tasks/categories/"/>">Kategorien bearbeiten</a>
-                </div>
-            </c:if>
-        
-        <div class="menuitem">
-                            <a href="<c:url value="/api/Tickets" />" target="_blank">REST - Schnittstelle</a>
-        </div>
-
+        </c:if>
     </jsp:attribute>
 
     <jsp:attribute name="content">
@@ -59,34 +38,24 @@
                 <input type="hidden" name="csrf_token" value="${csrf_token}">
 
                 <%-- Eingabefelder --%>
-                
-                <label for="admin">Administrator:</label>
-                <div class="adminCheckbox">
-                    <input type="checkbox" name="admin" disabled <c:if test="${currentUser.admin}">
-                           checked
-                        </c:if>
-                        
-                    >
-                </div>
-                
                 <label for="benutzerN">Benutzername:</label>
                 <div class="side-by-side">
-                    <input type="text" name="benutzerN" value="${currentUser.username}" readonly="readonly">
+                    <input type="text" name="benutzerN" value="${user.username}" readonly="readonly">
                 </div>
                 
                 <label for="vornameU">Vorname:</label>
                 <div class="side-by-side">
-                    <input type="text" name="vornameU" value="${currentUser.vorname}">
+                    <input type="text" name="vornameU" value="${user.vorname}">
                 </div>
 
                 <label for="nachnameU">Nachname:</label>
                 <div class="side-by-side">
-                    <input type="text" name="nachnameU" value="${currentUser.nachname}">
+                    <input type="text" name="nachnameU" value="${user.nachname}">
                 </div>
                 
                 <label for="telefonnummer">Telefonnummer: </label>
                 <div class="side-by-side">
-                    <input type="text" name="telefonnummer" value="${currentUser.telefonnummer}">
+                    <input type="text" name="telefonnummer" value="${user.telefonnummer}">
                 </div>
 
                 

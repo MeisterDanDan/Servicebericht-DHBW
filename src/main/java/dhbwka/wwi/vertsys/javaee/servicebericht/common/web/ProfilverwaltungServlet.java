@@ -33,7 +33,7 @@ public class ProfilverwaltungServlet extends HttpServlet{
     public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        request.setAttribute("currentUser", this.userBean.getCurrentUser());
+        request.setAttribute("user", this.userBean.getCurrentUser());
         
         request.getRequestDispatcher("/WEB-INF/profilverwaltung/profilverwaltung.jsp").forward(request, response);
     }

@@ -49,8 +49,10 @@
             </select>
 
             <select name="search_status">
-                <option value="">Alle Stati</option>
-
+                <option value="">Alle Status</option>
+                
+                <!--Ja die Mehrzahl von Status ist nicht Stati sondern (die) Status! :)-->
+                
                 <c:forEach items="${statuses}" var="status">
                     <option value="${status}" ${param.search_status == status ? 'selected' : ''}>
                         <c:out value="${status.label}"/>

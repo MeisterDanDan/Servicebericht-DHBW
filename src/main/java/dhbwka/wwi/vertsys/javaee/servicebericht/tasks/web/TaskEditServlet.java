@@ -18,8 +18,6 @@ import dhbwka.wwi.vertsys.javaee.servicebericht.common.ejb.ValidationBean;
 import dhbwka.wwi.vertsys.javaee.servicebericht.tasks.jpa.Task;
 import dhbwka.wwi.vertsys.javaee.servicebericht.tasks.jpa.TaskStatus;
 import java.io.IOException;
-import java.sql.Date;
-import java.sql.Time;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -125,6 +123,12 @@ public class TaskEditServlet extends HttpServlet {
             } catch (NumberFormatException ex) {
                 // Ungültige oder keine ID mitgegeben
             }
+        }
+        
+        try {
+            task.setStatus(TaskStatus.valueOf(taskStatus));
+        } catch (IllegalArgumentException ex) {
+            errors.add("Der ausgewählte Status ist nicht vorhanden.");
         }
 
         task.setShortText(taskShortText);
