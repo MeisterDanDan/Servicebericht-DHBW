@@ -147,13 +147,14 @@
                     <span class="required">*</span>
                 </label>
                 <div class="side-by-side margin">
-                    <select name="task_status" disabled="true">
+                    <select name="task_status" disabled>
                         <c:forEach items="${statuses}" var="status">
-                            <option value="${status}" ${task_form.values["task_status"][0] == status ? 'selected' : ''}>
+                            <option value="${status.label}" ${task_form.values["task_status"][0] == status ? 'selected' : ''}>
                                 <c:out value="${status.label}"/>
                             </option>
                         </c:forEach>
                     </select>
+                    <input type="hidden" name="task_status" value="${task_form.values["task_status"][0]}">
                 </div>
 
                 <label for="task_short_text">

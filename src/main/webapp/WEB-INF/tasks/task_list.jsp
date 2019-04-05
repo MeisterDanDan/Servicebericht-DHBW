@@ -15,7 +15,7 @@
 
 <template:base>
     <jsp:attribute name="title">
-        Liste der Aufgaben
+        Liste der Serviceberichte
     </jsp:attribute>
 
     <jsp:attribute name="head">
@@ -36,7 +36,7 @@
     <jsp:attribute name="content">
         <%-- Suchfilter --%>
         <form method="GET" class="horizontal" id="search">
-            <input type="text" name="search_text" value="${param.search_text}" placeholder="Beschreibung"/>
+            <input type="text" name="search_text" value="${param.search_text}" placeholder="Bezeichnung"/>
 
             <select name="search_category">
                 <option value="">Alle Kategorien</option>

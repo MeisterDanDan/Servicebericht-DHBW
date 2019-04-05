@@ -48,7 +48,6 @@
                     
                     <label for="signup_vorname">
                         Vorname:
-                        <span class="required">*</span>
                     </label>
                     <div class="side-by-side">
                         <input type="text" name="signup_vorname" value="${signup_form.values["signup_vorname"][0]}">
@@ -56,7 +55,6 @@
                     
                     <label for="signup_nachname">
                         Nachname:
-                        <span class="required">*</span>
                     </label>
                     <div class="side-by-side">
                         <input type="text" name="signup_nachname" value="${signup_form.values["signup_vnachname"][0]}">
