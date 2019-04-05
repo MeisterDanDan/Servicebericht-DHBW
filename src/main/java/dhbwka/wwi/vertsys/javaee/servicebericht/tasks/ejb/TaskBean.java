@@ -29,18 +29,33 @@ import javax.persistence.criteria.Root;
  */
 @Stateless
 @RolesAllowed("app-user")
-public class TaskBean extends EntityBean<Task, Long> { 
-   
+public class TaskBean extends EntityBean<Task, Long> {
+
     public TaskBean() {
         super(Task.class);
     }
-    
+
     /**
      * Alle Aufgaben eines Benutzers, nach Fälligkeit sortiert zurückliefern.
+     *
      * @param username Benutzername
      * @return Alle Aufgaben des Benutzers
      */
-    public List<Task> findByUsername(String username) {
+    public List<TaskToRet> findByStatus(TaskStatus Status) {
+        List<Task> tasks = em.createQuery("SELECT t FROM Task t WHERE t.status = :Status")
+                .setParameter("Status", Status)
+                .getResultList();
+
+        List<TaskToRet> tasksToRet = new ArrayList<>();
+        for (Task task : tasks) {
+            TaskToRet taskRet = new TaskToRet(task.getId(), task.getCategory(), task.getShortText(), task.getLongText());
+            tasksToRet.add(taskRet);
+        }
+        return tasksToRet;
+    
+
+}
+public List<Task> findByUsername(String username) {
         return em.createQuery("SELECT t FROM Task t WHERE t.owner.username = :username")
                  .setParameter("username", username)
                  .getResultList();
@@ -73,30 +88,46 @@ public class TaskBean extends EntityBean<Task, Long> {
         CriteriaBuilder cb = this.em.getCriteriaBuilder();
         
         // SELECT t FROM Task t
-        CriteriaQuery<Task> query = cb.createQuery(Task.class);
+        CriteriaQuery
+
+<Task> query = cb.createQuery(Task.class  
+
+    );
         Root<Task> from = query.from(Task.class);
-        query.select(from);
-        
-        // WHERE t.shortText LIKE :search
-        Predicate p = cb.conjunction();
-        
-        if (search != null && !search.trim().isEmpty()) {
+
+    query.select (from);
+
+    // WHERE t.shortText LIKE :search
+    Predicate p = cb.conjunction();
+
+    if (search
+
+    != null && !search.trim () 
+        .isEmpty()) {
             p = cb.and(p, cb.like(from.get("shortText"), "%" + search + "%"));
-            query.where(p);
-        }
-        
-        // WHERE t.category = :category
-        if (category != null) {
+        query.where(p);
+    }
+
+    // WHERE t.category = :category
+    if (category
+
+    
+        != null) {
             p = cb.and(p, cb.equal(from.get("category"), category));
-            query.where(p);
-        }
-        
-        // WHERE t.status = :status
-        if (status != null) {
+        query.where(p);
+    }
+
+    // WHERE t.status = :status
+    if (status
+
+    
+        != null) {
             p = cb.and(p, cb.equal(from.get("status"), status));
-            query.where(p);
-        }
-        
-        return em.createQuery(query).getResultList();
+        query.where(p);
+    }
+
+    return em.createQuery (query)
+
+.getResultList();
     }
 }
