@@ -47,6 +47,7 @@ public class TaskListServlet extends HttpServlet {
         String searchText = request.getParameter("search_text");
         String searchCategory = request.getParameter("search_category");
         String searchStatus = request.getParameter("search_status");
+        String search = request.getParameter("restInhalt");
 
         // Anzuzeigende Aufgaben suchen
         Category category = null;

@@ -49,7 +49,7 @@
             </select>
 
             <select name="search_status">
-                <option value="">Alle Status</option>
+                <option name="restInhalt" value="">Alle Status</option>
                 
                 <!--Ja die Mehrzahl von Status ist nicht Stati sondern (die) Status! :)-->
                 
@@ -62,6 +62,10 @@
 
             <button class="icon-search" type="submit">
                 Suchen
+            </button
+            
+            <button class="menuitem">
+                <a href="<c:url value="/api/Tickets/status/${param.search_status}"/>" target="_blank">REST - Statussuche</a>
             </button>
         </form>
 
