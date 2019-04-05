@@ -12,7 +12,7 @@
 
 <template:base>
     <jsp:attribute name="title">
-        Profilverwaltung
+        Nutzerverwaltung
     </jsp:attribute>
 
     <jsp:attribute name="head">
