@@ -47,12 +47,6 @@
                 </div>
             </c:if> 
         
-        
-                <div class="menuitem">
-                            <a href="<c:url value="/api/Tickets" />" target="_blank">REST - Schnittstelle</a>
-                </div>
-            
-
     </jsp:attribute>
 
     <jsp:attribute name="content">

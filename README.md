@@ -1,10 +1,15 @@
 Beispielanwendung "Servicebericht DHBW"
 =========================
 
-Studenten haben über die Webanwendung ,,Servicebericht DHBW" die Möglichkleit, Mängel durch das Anlegen von Serviceberichten zu melden.
-Auch sollen bereits angelegte Servieberichte allen Studenten angezeigt werden. Diese können nach folgenden Kategorien gefiltert werden: Offen, geschlossen und in Bearbeitung. Des Weiteren können die Serviceberichte nach Technik, Austattung und Sonstiges gefiltert werden.
-Zusätzlich können Studenten jeden Serviebericht kommentieren.
-Hausmeister können den Status der Servieberichte auf ,,in Bearbeitung" und auf ,,abgeschlossen" setzen.
+Anleitung zur Anlage des ersten Administrators:
+1. User über die Webanwendung registrieren
+2. In Netbeans in der Datenbank folgendes Statement reinkopieren, Benutzername anpassen und dann Run SQL drücken:
+    ,,UPDATE SERVICEBERICHT.SERVICEBERICHT_USER SET ADMIN=1 WHERE USERNAME ='hier muss der Benutzername stehen';"
+
+------------------
+
+Kurzbeschreibung:
+Studenten der DHBW haben über die Webanwendung die Möglichkeit, Mängel an ihrer dualen Hochschule durch das Anlegen von Serviceberichten den Hausmeistern melden zu können. Um die Sicherheit der Daten zu gewährleisten, gibt es einen vor die Webanwendung geschalteten Login Bereich für Studenten und Hausmeister. Auf der Startseite werden die Serviceberichte nach den Kategorien gefiltert, welche zuvor von einem Administrator angelegt wurden. Folgende Kategorien wären für die DHBW denkbar: ,,Alle Kategorien, Technik, Raum und Sonstiges“. Innerhalb dieser Kategorien sind die Serviceberichte in die Status: ,,Alle, Offen, In Bearbeitung und Erledigt“ eingeteilt. Die dort enthaltenen Serviceberichte können über eine REST-Schnittstelle als JSON Objekte angezeigt werden. Der Hausmeister besitzt als Administrator zusätzliche Funktionen. Er kann bestehende Kategorien löschen, neue Kategorien anlegen, registrierten Nutzern Administratorrechte vergeben und Serviceberichte löschen.
 
 ----------------
 
