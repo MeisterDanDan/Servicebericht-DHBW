@@ -48,11 +48,22 @@
                 </c:forEach>
             </select>
 
-            <select name="search_status">
+            <script type="text/javascript">
+                function handleClick(elm) {
+                    let url = window.location.href.split("app/tasks/list/")[0] + "api/Tickets/status/";
+                    let oSelected = document.getElementById("selected");
+                    let sValue = oSelected.options[oSelected.selectedIndex].value;
+                    url = url + sValue;
+                    window.open(url, '_blank');
+                }
+
+            </script>
+
+            <select name="search_status" id="selected" onchange="">
                 <option name="restInhalt" value="">Alle Status</option>
-                
+
                 <!--Ja die Mehrzahl von Status ist nicht Stati sondern (die) Status! :)-->
-                
+
                 <c:forEach items="${statuses}" var="status">
                     <option value="${status}" ${param.search_status == status ? 'selected' : ''}>
                         <c:out value="${status.label}"/>
@@ -62,13 +73,11 @@
 
             <button class="icon-search" type="submit">
                 Suchen
-            </button
-            
-            <button class="menuitem">
-                <a href="<c:url value="/api/Tickets/status/${param.search_status}"/>" target="_blank">REST - Statussuche</a>
             </button>
-        </form>
+            <INPUT TYPE="BUTTON" VALUE="  Rest-Schnittstelle Status Filter" ONCLICK="handleClick()">
 
+
+        </form>
         <%-- Gefundene Aufgaben --%>
         <c:choose>
             <c:when test="${empty tasks}">
@@ -78,7 +87,7 @@
             </c:when>
             <c:otherwise>
                 <jsp:useBean id="utils" class="dhbwka.wwi.vertsys.javaee.servicebericht.common.web.WebUtils"/>
-                
+
                 <table>
                     <thead>
                         <tr>

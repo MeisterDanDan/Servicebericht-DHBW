@@ -41,6 +41,13 @@ public class TicketRes {
     public List<TaskToRet> findTickets() {
         return this.taskBean.getTasks();
     }
+    @Path("Tickets/status")
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<TaskToRet> findTicketsAllStatus() {
+        return this.taskBean.getTasks();
+    }
+    
 
     @POST
     public Task saveNewTicket(@Valid Task ticket) {
